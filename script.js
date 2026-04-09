@@ -26,17 +26,16 @@ function displayJobs(jobArray) {
   });
 }
 
-// 🔍 SEARCH FUNCTION
-searchInput.addEventListener("input", () => {
-  const value = searchInput.value.toLowerCase();
+searchInput.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
 
-  const filteredJobs = jobs.filter(job =>
+  const filtered = jobs.filter(job =>
     job.title.toLowerCase().includes(value) ||
     job.company.toLowerCase().includes(value) ||
     job.location.toLowerCase().includes(value)
   );
 
-  displayJobs(filteredJobs);
+  displayJobs(filtered);
 });
 
 displayJobs(jobs);
