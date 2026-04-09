@@ -123,7 +123,8 @@ typeFilter.addEventListener("change", applyFilters);
 // initial load
 displayJobs(jobs);
 // CLOSE MODAL
-document.getElementById("close-modal").addEventListener("click", () => {
+document.getElementById("close-modal").addEventListener("click", (event) => {
+  event.stopPropagation();
   document.getElementById("job-modal").classList.add("hidden");
 });
 window.addEventListener("click", (event) => {
@@ -132,4 +133,7 @@ window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.classList.add("hidden");
   }
+});
+document.querySelector(".modal-content").addEventListener("click", (event) => {
+  event.stopPropagation();
 });
