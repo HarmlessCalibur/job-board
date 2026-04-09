@@ -23,18 +23,29 @@ function displayJobs(jobArray) {
       <button class="save-btn">Save</button>
     `;
 
-    // ✅ NOW jobCard exists, so we can select inside it
-    const saveBtn = jobCard.querySelector(".save-btn");
+    // 
 
-    saveBtn.addEventListener("click", () => {
-      savedJobs.push(job);
-      localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
-      alert("Job saved!");
-    });
+   const saveBtn = jobCard.querySelector(".save-btn");
 
-    jobList.appendChild(jobCard);
-  });
+// check if already saved
+const isSaved = savedJobs.some(saved => saved.title === job.title);
+
+if (isSaved) {
+  saveBtn.textContent = "Saved";
+  saveBtn.disabled = true;
 }
+
+saveBtn.addEventListener("click", () => {
+  if (!isSaved) {
+    savedJobs.push(job);
+    localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+
+    saveBtn.textContent = "Saved";
+    saveBtn.disabled = true;
+
+    alert("Job saved!");
+  }
+});
 
 searchInput.addEventListener("input", function () {
   const value = this.value.toLowerCase();
