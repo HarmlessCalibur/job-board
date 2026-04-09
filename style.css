@@ -2,12 +2,16 @@ body {
   background: #0a0f0d;
   color: #caffea;
   font-family: "Courier New", monospace;
+
+  animation: fadeIn 0.5s ease-in;  
 }
 header {
   background: #0a0f0d;
   border-bottom: 1px solid #00ff9c;
 }
-
+header h1 {
+  animation: glitch 6s infinite;
+}
 #searchInput {
   margin-top: 10px;
   padding: 8px;
@@ -308,6 +312,19 @@ input, select {
 
   color: #00ff9c;
 box-shadow: 0 0 20px rgba(0,255,150,0.2);
+animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
 }
 #close-modal {
   position: absolute;
@@ -334,4 +351,21 @@ body::after {
   );
 
   opacity: 0.3;
+}
+@keyframes glitch {
+  0% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.4; }
+  94% { opacity: 1; }
+  96% { opacity: 0.6; }
+  97% { opacity: 1; }
+  100% { opacity: 1; }
+}
+.apply-btn:active, .save-btn:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 15px #00ff9c;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
