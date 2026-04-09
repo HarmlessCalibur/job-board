@@ -71,3 +71,15 @@ header {
   border-radius: 5px;
   cursor: pointer;
 }
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px;
+}
+
+.filters select {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}

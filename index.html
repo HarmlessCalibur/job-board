@@ -7,10 +7,26 @@
 </head>
 <body>
 
-  <header>
-    <h1>Job Board</h1>
-    <input type="text" id="searchInput" placeholder="Search jobs...">
-  </header>
+<header>
+  <h1>Job Board</h1>
+  <input type="text" id="searchInput" placeholder="Search jobs...">
+  <div class="filters">
+    <select id="locationFilter">
+      <option value="">All Locations</option>
+      <option value="Remote">Remote</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Hyderabad">Hyderabad</option>
+    </select>
+
+    <select id="typeFilter">
+      <option value="">All Roles</option>
+      <option value="Frontend Developer">Frontend Developer</option>
+      <option value="Backend Developer">Backend Developer</option>
+      <option value="UI Designer">UI Designer</option>
+      <option value="Software Engineer">Software Engineer</option>
+    </select>
+  </div>
+</header>
 
   <main>
     <div id="job-list"></div>

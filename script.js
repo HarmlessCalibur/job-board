@@ -5,9 +5,16 @@ const jobs = [
   { title: "Software Engineer", company: "Meta", location: "Remote" }
 ];
 
+// DOM elements
 const jobList = document.getElementById("job-list");
 const searchInput = document.getElementById("searchInput");
+const locationFilter = document.getElementById("locationFilter");
+const typeFilter = document.getElementById("typeFilter");
 
+// saved jobs (persistent)
+let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+
+// display jobs
 function displayJobs(jobArray) {
   jobList.innerHTML = "";
 
@@ -23,40 +30,60 @@ function displayJobs(jobArray) {
       <button class="save-btn">Save</button>
     `;
 
-    // 
+    const saveBtn = jobCard.querySelector(".save-btn");
 
-   const saveBtn = jobCard.querySelector(".save-btn");
+    // check if already saved
+    const isSaved = savedJobs.some(saved => saved.title === job.title);
 
-// check if already saved
-const isSaved = savedJobs.some(saved => saved.title === job.title);
+    if (isSaved) {
+      saveBtn.textContent = "Saved";
+      saveBtn.disabled = true;
+    }
 
-if (isSaved) {
-  saveBtn.textContent = "Saved";
-  saveBtn.disabled = true;
+    saveBtn.addEventListener("click", () => {
+      if (!isSaved) {
+        savedJobs.push(job);
+        localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+
+        saveBtn.textContent = "Saved";
+        saveBtn.disabled = true;
+
+        alert("Job saved!");
+      }
+    });
+
+    jobList.appendChild(jobCard);
+  });
 }
 
-saveBtn.addEventListener("click", () => {
-  if (!isSaved) {
-    savedJobs.push(job);
-    localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+// filter + search logic
+function applyFilters() {
+  const searchValue = searchInput.value.toLowerCase();
+  const locationValue = locationFilter.value;
+  const typeValue = typeFilter.value;
 
-    saveBtn.textContent = "Saved";
-    saveBtn.disabled = true;
+  const filtered = jobs.filter(job => {
+    const matchesSearch =
+      job.title.toLowerCase().includes(searchValue) ||
+      job.company.toLowerCase().includes(searchValue) ||
+      job.location.toLowerCase().includes(searchValue);
 
-    alert("Job saved!");
-  }
-});
+    const matchesLocation =
+      locationValue === "" || job.location === locationValue;
 
-searchInput.addEventListener("input", function () {
-  const value = this.value.toLowerCase();
+    const matchesType =
+      typeValue === "" || job.title === typeValue;
 
-  const filtered = jobs.filter(job =>
-    job.title.toLowerCase().includes(value) ||
-    job.company.toLowerCase().includes(value) ||
-    job.location.toLowerCase().includes(value)
-  );
+    return matchesSearch && matchesLocation && matchesType;
+  });
 
   displayJobs(filtered);
-});
-let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+}
+
+// event listeners
+searchInput.addEventListener("input", applyFilters);
+locationFilter.addEventListener("change", applyFilters);
+typeFilter.addEventListener("change", applyFilters);
+
+// initial load
 displayJobs(jobs);
