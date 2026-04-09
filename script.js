@@ -53,6 +53,14 @@ function displayJobs(jobArray) {
     `;
 
     const saveBtn = jobCard.querySelector(".save-btn");
+const applyBtn = jobCard.querySelector(".apply-btn");
+
+applyBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  // for now just feedback
+  alert("Redirecting to application portal...");
+});
 
     // check if already saved
     const isSaved = savedJobs.some(
