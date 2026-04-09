@@ -16,7 +16,7 @@
   </nav>
 
   <div class="landing">
-    <h1>Welcome to Job Board</h1>
+    <h1 id="title"></h1>
     <p>Find your dream job easily.</p>
 
     <div class="landing-buttons">
@@ -29,6 +29,21 @@
       </a>
     </div>
   </div>
+
+<script id="h0d9zq">
+const text = "WELCOME TO JOB BOARD";
+let i = 0;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("title").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  }
+}
+
+typeEffect();
+</script>
 
 </body>
 </html>
