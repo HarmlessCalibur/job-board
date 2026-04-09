@@ -83,12 +83,14 @@ applyBtn.addEventListener("click", (event) => {
         saveBtn.textContent = "Saved";
         saveBtn.disabled = true;
 
-        const toast = document.getElementById("toast");
-        toast.classList.add("show");
+       const toast = document.getElementById("toast");
+toast.textContent = "Application sent!";
+toast.classList.add("show");
 
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2000);
+setTimeout(() => {
+  toast.classList.remove("show");
+  toast.textContent = "Job saved!";
+}, 2000);
       }
     });
 
