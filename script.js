@@ -1,8 +1,19 @@
 const jobs = [
   { title: "Frontend Developer", company: "Google", location: "Remote" },
+  { title: "Frontend Developer", company: "Netflix", location: "Bangalore" },
+  { title: "Frontend Developer", company: "Adobe", location: "Hyderabad" },
+
   { title: "Backend Developer", company: "Amazon", location: "Bangalore" },
+  { title: "Backend Developer", company: "Flipkart", location: "Remote" },
+  { title: "Backend Developer", company: "Uber", location: "Hyderabad" },
+
   { title: "UI Designer", company: "Microsoft", location: "Hyderabad" },
-  { title: "Software Engineer", company: "Meta", location: "Remote" }
+  { title: "UI Designer", company: "Figma", location: "Remote" },
+  { title: "UI Designer", company: "Canva", location: "Bangalore" },
+
+  { title: "Software Engineer", company: "Meta", location: "Remote" },
+  { title: "Software Engineer", company: "Apple", location: "Bangalore" },
+  { title: "Software Engineer", company: "Tesla", location: "Hyderabad" }
 ];
 
 // DOM elements
