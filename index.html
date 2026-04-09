@@ -49,6 +49,23 @@ document.addEventListener("keydown", function (e) {
     window.location.href = "jobs.html";
   }
 });
+let ready = false;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("title").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  } else {
+    ready = true; // 👈 typing finished
+  }
+}
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && ready) {
+    window.location.href = "jobs.html";
+  }
+});
 </script>
 
 </body>

@@ -1,9 +1,8 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f7fa;
+  background: #0a0f0d;
+  color: #caffea;
+  font-family: "Courier New", monospace;
 }
-
 header {
   background: #1e293b;
   color: white;
@@ -27,49 +26,49 @@ header {
 }
 
 .job-card {
-  background: white;
+  background: #111817;
+  border: 1px solid #00ff9c;
+
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  margin: 10px;
+  border-radius: 5px;
+
+  transition: all 0.3s;
 }
 
 .job-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 0 10px #00ff9c;
+  transform: scale(1.02);
 }
 
 .job-title {
+  color: #00ff9c;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .job-company {
-  color: #555;
+  color: #aaffcc;
 }
 
 .job-location {
-  font-size: 14px;
-  color: #888;
+  font-size: 13px;
+  opacity: 0.7;
 }
 
-.apply-btn {
+.apply-btn, .save-btn {
+  background: transparent;
+  border: 1px solid #00ff9c;
+  color: #00ff9c;
+
+  padding: 5px 10px;
   margin-top: 10px;
-  padding: 8px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 5px;
+
   cursor: pointer;
+  transition: 0.2s;
 }
-.save-btn {
-  margin-top: 10px;
-  margin-left: 10px;
-  padding: 8px;
-  background: #16a34a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.apply-btn:hover, .save-btn:hover {
+  background: #00ff9c;
+  color: black;
 }
 .filters {
   display: flex;
@@ -151,22 +150,20 @@ header {
   transform: scale(0.95);
 }
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1e293b;
-  color: white;
-  padding: 10px 20px;
+  background: #111817;
+  border-bottom: 1px solid #00ff9c;
+}
+
+.navbar h2 {
+  color: #00ff9c;
 }
 
 .navbar a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
+  color: #caffea;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
+  color: #00ff9c;
 }
 .landing::before {
   content: "";
@@ -235,4 +232,11 @@ header {
 #enterText:hover {
   text-shadow: 0 0 10px #00ff9c;
 }
+input, select {
+  background: #111817;
+  border: 1px solid #00ff9c;
+  color: #caffea;
 
+  padding: 8px;
+  margin: 5px;
+}
