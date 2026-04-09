@@ -35,10 +35,32 @@ header {
   justify-content: space-between;
 
   min-height: 180px;
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
 }
 .job-card:hover {
-  box-shadow: 0 0 10px #00ff9c;
-  transform: scale(1.02);
+  box-shadow: 0 0 12px #00ff9c;
+  transform: translateY(-3px) scale(1.01);
+}
+
+.job-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+.job-card:hover::before {
+  border-color: #00ff9c;
+  animation: pulseBorder 1.2s infinite;
+}
+
+@keyframes pulseBorder {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
 .job-card button {
   margin-right: 8px;
@@ -67,15 +89,16 @@ header {
   border: 1px solid #00ff9c;
   color: #00ff9c;
 
-  padding: 5px 10px;
+  padding: 6px 12px;
   margin-top: 10px;
 
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 .apply-btn:hover, .save-btn:hover {
   background: #00ff9c;
   color: black;
+  box-shadow: 0 0 10px #00ff9c;
 }
 .filters {
   display: flex;
@@ -284,6 +307,7 @@ input, select {
   width: 400px;
 
   color: #00ff9c;
+box-shadow: 0 0 20px rgba(0,255,150,0.2);
 }
 #close-modal {
   position: absolute;
@@ -294,4 +318,20 @@ input, select {
   font-size: 22px;
 
   color: #00ff9c;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,150,0.04),
+    rgba(0,255,150,0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+
+  opacity: 0.3;
 }
