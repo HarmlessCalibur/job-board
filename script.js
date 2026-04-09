@@ -126,3 +126,10 @@ displayJobs(jobs);
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("job-modal").classList.add("hidden");
 });
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("job-modal");
+
+  if (event.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
