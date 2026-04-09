@@ -141,9 +141,13 @@ modal.addEventListener("click", (event) => {
 });
 
 // PREVENT INNER CLICK FROM CLOSING
-document.querySelector(".modal-content").addEventListener("click", (event) => {
-  event.stopPropagation();
-});
+const modalContent = document.querySelector(".modal-content");
+
+if (modalContent) {
+  modalContent.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+}
 
 // initial load
 displayJobs(jobs);
