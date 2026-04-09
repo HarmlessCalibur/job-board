@@ -30,7 +30,7 @@ function displayJobs(jobArray) {
   jobList.innerHTML = "";
 
   if (jobArray.length === 0) {
-    jobList.innerHTML = "<p>No jobs found 😢</p>";
+    jobList.innerHTML = "<p>No suitable tasks found.</p>";
     return;
   }
 
@@ -60,7 +60,8 @@ function displayJobs(jobArray) {
       saveBtn.disabled = true;
     }
 
-    saveBtn.addEventListener("click", () => {
+   saveBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
       if (!isSaved) {
         savedJobs.push(job);
         localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
@@ -77,7 +78,15 @@ function displayJobs(jobArray) {
         }, 2000);
       }
     });
+jobCard.addEventListener("click", () => {
+  document.getElementById("modal-title").textContent = job.title;
+  document.getElementById("modal-company").textContent = "Company: " + job.company;
+  document.getElementById("modal-location").textContent = "Location: " + job.location;
+  document.getElementById("modal-salary").textContent = "Salary: " + job.salary;
+  document.getElementById("modal-type").textContent = "Type: " + job.type;
 
+  document.getElementById("job-modal").classList.remove("hidden");
+});
     jobList.appendChild(jobCard);
   });
 }
@@ -113,3 +122,7 @@ typeFilter.addEventListener("change", applyFilters);
 
 // initial load
 displayJobs(jobs);
+// CLOSE MODAL
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("job-modal").classList.add("hidden");
+});
