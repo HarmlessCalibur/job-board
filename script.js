@@ -6,6 +6,7 @@ const jobs = [
 ];
 
 const jobList = document.getElementById("job-list");
+const searchInput = document.getElementById("searchInput");
 
 function displayJobs(jobArray) {
   jobList.innerHTML = "";
@@ -24,5 +25,18 @@ function displayJobs(jobArray) {
     jobList.appendChild(jobCard);
   });
 }
+
+// 🔍 SEARCH FUNCTION
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  const filteredJobs = jobs.filter(job =>
+    job.title.toLowerCase().includes(value) ||
+    job.company.toLowerCase().includes(value) ||
+    job.location.toLowerCase().includes(value)
+  );
+
+  displayJobs(filteredJobs);
+});
 
 displayJobs(jobs);
