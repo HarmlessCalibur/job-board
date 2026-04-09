@@ -111,7 +111,7 @@ header {
 .landing {
   height: 100vh;
 
-  background: url("https://www.peakpx.com/en/hd-wallpaper-desktop-fpvqv") no-repeat center center/cover;
+  background: url("images/mgs.jpg") no-repeat center center/cover;
 
   display: flex;
   flex-direction: column;
@@ -120,7 +120,6 @@ header {
 
   color: #00ff9c;
   text-align: center;
-
   position: relative;
 }
 
