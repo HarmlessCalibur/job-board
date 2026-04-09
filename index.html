@@ -2,37 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Job Board</title>
+  <title>Job Board - Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>Job Board</h1>
-  <input type="text" id="searchInput" placeholder="Search jobs...">
-  <div class="filters">
-    <select id="locationFilter">
-      <option value="">All Locations</option>
-      <option value="Remote">Remote</option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Hyderabad">Hyderabad</option>
-    </select>
+  <div class="landing">
+    <h1>Welcome to Job Board</h1>
+    <p>Find your dream job easily.</p>
 
-    <select id="typeFilter">
-      <option value="">All Roles</option>
-      <option value="Frontend Developer">Frontend Developer</option>
-      <option value="Backend Developer">Backend Developer</option>
-      <option value="UI Designer">UI Designer</option>
-      <option value="Software Engineer">Software Engineer</option>
-    </select>
+    <div class="landing-buttons">
+      <a href="jobs.html">
+        <button>Look for a Job</button>
+      </a>
+
+      <a href="contact.html">
+        <button>Contact Us</button>
+      </a>
+    </div>
   </div>
-</header>
 
-  <main>
-    <div id="job-list"></div>
-  </main>
-
-  <script src="script.js?v=2"></script>
-<div id="toast" class="toast">Job saved!</div>
 </body>
 </html>

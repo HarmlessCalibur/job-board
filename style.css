@@ -107,4 +107,25 @@ header {
 
 .toast.show {
   opacity: 1;
+} 
+.landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #1e293b;
+  color: white;
+  text-align: center;
+}
+
+.landing-buttons button {
+  margin: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
 }
