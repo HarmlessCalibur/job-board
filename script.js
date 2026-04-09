@@ -53,14 +53,7 @@ function displayJobs(jobArray) {
     `;
 
     const saveBtn = jobCard.querySelector(".save-btn");
-const applyBtn = jobCard.querySelector(".apply-btn");
-
-applyBtn.addEventListener("click", (event) => {
-  event.stopPropagation();
-
-  // for now just feedback
-  alert("Redirecting to application portal...");
-});
+    const applyBtn = jobCard.querySelector(".apply-btn");
 
     // check if already saved
     const isSaved = savedJobs.some(
@@ -72,7 +65,21 @@ applyBtn.addEventListener("click", (event) => {
       saveBtn.disabled = true;
     }
 
-    // SAVE BUTTON
+    // APPLY BUTTON ✅
+    applyBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      const toast = document.getElementById("toast");
+      toast.textContent = "Application sent!";
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        toast.textContent = "Job saved!";
+      }, 2000);
+    });
+
+    // SAVE BUTTON ✅
     saveBtn.addEventListener("click", (event) => {
       event.stopPropagation();
 
@@ -83,14 +90,13 @@ applyBtn.addEventListener("click", (event) => {
         saveBtn.textContent = "Saved";
         saveBtn.disabled = true;
 
-       const toast = document.getElementById("toast");
-toast.textContent = "Application sent!";
-toast.classList.add("show");
+        const toast = document.getElementById("toast");
+        toast.textContent = "Job saved!";
+        toast.classList.add("show");
 
-setTimeout(() => {
-  toast.classList.remove("show");
-  toast.textContent = "Job saved!";
-}, 2000);
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
       }
     });
 
@@ -150,9 +156,8 @@ modal.addEventListener("click", (event) => {
   }
 });
 
-// PREVENT INNER CLICK FROM CLOSING
+// PREVENT INNER CLICK
 const modalContent = document.querySelector(".modal-content");
-
 if (modalContent) {
   modalContent.addEventListener("click", (event) => {
     event.stopPropagation();
