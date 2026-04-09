@@ -110,24 +110,39 @@ header {
 } 
 .landing {
   height: 100vh;
+
+  background: url("https://www.peakpx.com/en/hd-wallpaper-desktop-fpvqv") no-repeat center center/cover;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #1e293b;
-  color: white;
+
+  color: #00ff9c;
   text-align: center;
+
+  position: relative;
 }
 
 .landing-buttons button {
   margin: 10px;
-  padding: 12px 20px;
+  padding: 12px 25px;
+
+  background: transparent;
+  border: 2px solid #00ff9c;
+  color: #00ff9c;
+
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background: #2563eb;
-  color: white;
+  letter-spacing: 2px;
+
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.landing-buttons button:hover {
+  background: #00ff9c;
+  color: black;
+}
 }
 .navbar {
   display: flex;
@@ -146,4 +161,44 @@ header {
 
 .navbar a:hover {
   text-decoration: underline;
+}
+.landing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.landing * {
+  position: relative;
+  z-index: 1;
+}
+.landing h1 {
+  font-size: 48px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.landing p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #aaffcc;
+}
+.landing::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,150,0.05),
+    rgba(0,255,150,0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
