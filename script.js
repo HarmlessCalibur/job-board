@@ -20,7 +20,17 @@ function displayJobs(jobArray) {
       <div class="job-company">${job.company}</div>
       <div class="job-location">${job.location}</div>
       <button class="apply-btn">Apply</button>
+      <button class="save-btn">Save</button>
     `;
+
+    // ✅ NOW jobCard exists, so we can select inside it
+    const saveBtn = jobCard.querySelector(".save-btn");
+
+    saveBtn.addEventListener("click", () => {
+      savedJobs.push(job);
+      localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+      alert("Job saved!");
+    });
 
     jobList.appendChild(jobCard);
   });
@@ -37,5 +47,5 @@ searchInput.addEventListener("input", function () {
 
   displayJobs(filtered);
 });
-
+let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
 displayJobs(jobs);
