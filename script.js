@@ -22,7 +22,11 @@ const searchInput = document.getElementById("searchInput");
 const locationFilter = document.getElementById("locationFilter");
 const typeFilter = document.getElementById("typeFilter");
 
-// saved jobs (persistent)
+// modal elements
+const modal = document.getElementById("job-modal");
+const closeBtn = document.getElementById("close-modal");
+
+// saved jobs
 let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
 
 // display jobs
@@ -50,7 +54,7 @@ function displayJobs(jobArray) {
 
     const saveBtn = jobCard.querySelector(".save-btn");
 
-    // 
+    // check if already saved
     const isSaved = savedJobs.some(
       saved => saved.title === job.title && saved.company === job.company
     );
@@ -60,8 +64,10 @@ function displayJobs(jobArray) {
       saveBtn.disabled = true;
     }
 
-   saveBtn.addEventListener("click", (event) => {
-  event.stopPropagation();
+    // SAVE BUTTON
+    saveBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
       if (!isSaved) {
         savedJobs.push(job);
         localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
@@ -69,7 +75,6 @@ function displayJobs(jobArray) {
         saveBtn.textContent = "Saved";
         saveBtn.disabled = true;
 
-        // toast
         const toast = document.getElementById("toast");
         toast.classList.add("show");
 
@@ -78,20 +83,23 @@ function displayJobs(jobArray) {
         }, 2000);
       }
     });
-jobCard.addEventListener("click", () => {
-  document.getElementById("modal-title").textContent = job.title;
-  document.getElementById("modal-company").textContent = "Company: " + job.company;
-  document.getElementById("modal-location").textContent = "Location: " + job.location;
-  document.getElementById("modal-salary").textContent = "Salary: " + job.salary;
-  document.getElementById("modal-type").textContent = "Type: " + job.type;
 
-  document.getElementById("job-modal").classList.remove("hidden");
-});
+    // OPEN MODAL
+    jobCard.addEventListener("click", () => {
+      document.getElementById("modal-title").textContent = job.title;
+      document.getElementById("modal-company").textContent = "Company: " + job.company;
+      document.getElementById("modal-location").textContent = "Location: " + job.location;
+      document.getElementById("modal-salary").textContent = "Salary: " + job.salary;
+      document.getElementById("modal-type").textContent = "Type: " + job.type;
+
+      modal.classList.remove("hidden");
+    });
+
     jobList.appendChild(jobCard);
   });
 }
 
-// filter + search logic
+// filter logic
 function applyFilters() {
   const searchValue = searchInput.value.toLowerCase();
   const locationValue = locationFilter.value;
@@ -120,20 +128,22 @@ searchInput.addEventListener("input", applyFilters);
 locationFilter.addEventListener("change", applyFilters);
 typeFilter.addEventListener("change", applyFilters);
 
-// initial load
-displayJobs(jobs);
-// CLOSE MODAL
-document.getElementById("close-modal").addEventListener("click", (event) => {
-  event.stopPropagation();
-  document.getElementById("job-modal").classList.add("hidden");
+// CLOSE BUTTON
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
 });
-window.addEventListener("click", (event) => {
-  const modal = document.getElementById("job-modal");
 
+// CLICK OUTSIDE TO CLOSE
+modal.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.classList.add("hidden");
   }
 });
+
+// PREVENT INNER CLICK FROM CLOSING
 document.querySelector(".modal-content").addEventListener("click", (event) => {
   event.stopPropagation();
 });
+
+// initial load
+displayJobs(jobs);
