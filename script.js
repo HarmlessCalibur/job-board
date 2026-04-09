@@ -1,21 +1,20 @@
 const jobs = [
-  { title: "Frontend Developer", company: "Google", location: "Remote" },
-  { title: "Frontend Developer", company: "Netflix", location: "Bangalore" },
-  { title: "Frontend Developer", company: "Adobe", location: "Hyderabad" },
+  { title: "Frontend Developer", company: "Google", location: "Remote", salary: "₹12–18 LPA", type: "Full-time" },
+  { title: "Frontend Developer", company: "Netflix", location: "Bangalore", salary: "₹10–16 LPA", type: "Full-time" },
+  { title: "Frontend Developer", company: "Adobe", location: "Hyderabad", salary: "₹8–14 LPA", type: "Contract" },
 
-  { title: "Backend Developer", company: "Amazon", location: "Bangalore" },
-  { title: "Backend Developer", company: "Flipkart", location: "Remote" },
-  { title: "Backend Developer", company: "Uber", location: "Hyderabad" },
+  { title: "Backend Developer", company: "Amazon", location: "Bangalore", salary: "₹15–22 LPA", type: "Full-time" },
+  { title: "Backend Developer", company: "Flipkart", location: "Remote", salary: "₹12–20 LPA", type: "Remote" },
+  { title: "Backend Developer", company: "Uber", location: "Hyderabad", salary: "₹14–21 LPA", type: "Full-time" },
 
-  { title: "UI Designer", company: "Microsoft", location: "Hyderabad" },
-  { title: "UI Designer", company: "Figma", location: "Remote" },
-  { title: "UI Designer", company: "Canva", location: "Bangalore" },
+  { title: "UI Designer", company: "Microsoft", location: "Hyderabad", salary: "₹8–12 LPA", type: "Full-time" },
+  { title: "UI Designer", company: "Figma", location: "Remote", salary: "₹7–11 LPA", type: "Remote" },
+  { title: "UI Designer", company: "Canva", location: "Bangalore", salary: "₹6–10 LPA", type: "Contract" },
 
-  { title: "Software Engineer", company: "Meta", location: "Remote" },
-  { title: "Software Engineer", company: "Apple", location: "Bangalore" },
-  { title: "Software Engineer", company: "Tesla", location: "Hyderabad" }
+  { title: "Software Engineer", company: "Meta", location: "Remote", salary: "₹20–30 LPA", type: "Full-time" },
+  { title: "Software Engineer", company: "Apple", location: "Bangalore", salary: "₹18–28 LPA", type: "Full-time" },
+  { title: "Software Engineer", company: "Tesla", location: "Hyderabad", salary: "₹16–25 LPA", type: "Full-time" }
 ];
-
 // DOM elements
 const jobList = document.getElementById("job-list");
 const searchInput = document.getElementById("searchInput");
@@ -37,6 +36,8 @@ function displayJobs(jobArray) {
       <div class="job-title">${job.title}</div>
       <div class="job-company">${job.company}</div>
       <div class="job-location">${job.location}</div>
+	<div class="job-salary">${job.salary}</div>
+	<div class="job-type">${job.type}</div>
       <button class="apply-btn">Apply</button>
       <button class="save-btn">Save</button>
     `;
@@ -59,7 +60,13 @@ function displayJobs(jobArray) {
         saveBtn.textContent = "Saved";
         saveBtn.disabled = true;
 
-        alert("Job saved!");
+        const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(() => {
+  toast.classList.remove("show");
+}, 2000);
       }
     });
 

@@ -83,3 +83,13 @@ header {
   border-radius: 5px;
   border: none;
 }
+.job-salary {
+  color: #16a34a;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.job-type {
+  font-size: 12px;
+  color: #555;
+}
