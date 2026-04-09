@@ -17,7 +17,7 @@
 
   <div class="landing">
     <h1 id="title"></h1>
-    <p>Find your dream job easily.</p>
+    <p class="subtitle">Select your path.</p>
 
     <div class="landing-buttons">
       <a href="jobs.html">
@@ -28,10 +28,11 @@
         <button>Contact Us</button>
       </a>
     </div>
+<p id="enterText">Press Enter to Continue</p>
   </div>
 
 <script id="h0d9zq">
-const text = "WELCOME TO JOB BOARD";
+const text = "WELCOME TO THE JOBS BOARD";
 let i = 0;
 
 function typeEffect() {
@@ -43,6 +44,11 @@ function typeEffect() {
 }
 
 typeEffect();
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    window.location.href = "jobs.html";
+  }
+});
 </script>
 
 </body>

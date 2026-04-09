@@ -135,13 +135,20 @@ header {
   letter-spacing: 2px;
 
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
 }
 
 .landing-buttons button:hover {
   background: #00ff9c;
   color: black;
+
+  box-shadow: 
+    0 0 5px #00ff9c,
+    0 0 10px #00ff9c,
+    0 0 20px #00ff9c;
 }
+.landing-buttons button:active {
+  transform: scale(0.95);
 }
 .navbar {
   display: flex;
@@ -201,3 +208,31 @@ header {
     transparent 3px
   );
 }
+#title::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.subtitle {
+  font-size: 16px;
+  color: #aaffcc;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+#enterText {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #00ff9c;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  animation: blink 1.5s infinite;
+}
+#enterText:hover {
+  text-shadow: 0 0 10px #00ff9c;
+}
+
