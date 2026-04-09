@@ -15,6 +15,7 @@ const jobs = [
   { title: "Software Engineer", company: "Apple", location: "Bangalore", salary: "₹18–28 LPA", type: "Full-time" },
   { title: "Software Engineer", company: "Tesla", location: "Hyderabad", salary: "₹16–25 LPA", type: "Full-time" }
 ];
+
 // DOM elements
 const jobList = document.getElementById("job-list");
 const searchInput = document.getElementById("searchInput");
@@ -28,6 +29,11 @@ let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
 function displayJobs(jobArray) {
   jobList.innerHTML = "";
 
+  if (jobArray.length === 0) {
+    jobList.innerHTML = "<p>No jobs found 😢</p>";
+    return;
+  }
+
   jobArray.forEach(job => {
     const jobCard = document.createElement("div");
     jobCard.classList.add("job-card");
@@ -36,16 +42,18 @@ function displayJobs(jobArray) {
       <div class="job-title">${job.title}</div>
       <div class="job-company">${job.company}</div>
       <div class="job-location">${job.location}</div>
-	<div class="job-salary">${job.salary}</div>
-	<div class="job-type">${job.type}</div>
+      <div class="job-salary">${job.salary}</div>
+      <div class="job-type">${job.type}</div>
       <button class="apply-btn">Apply</button>
       <button class="save-btn">Save</button>
     `;
 
     const saveBtn = jobCard.querySelector(".save-btn");
 
-    // check if already saved
-    const isSaved = savedJobs.some(saved => saved.title === job.title);
+    // 
+    const isSaved = savedJobs.some(
+      saved => saved.title === job.title && saved.company === job.company
+    );
 
     if (isSaved) {
       saveBtn.textContent = "Saved";
@@ -60,13 +68,13 @@ function displayJobs(jobArray) {
         saveBtn.textContent = "Saved";
         saveBtn.disabled = true;
 
+        // toast
         const toast = document.getElementById("toast");
+        toast.classList.add("show");
 
-toast.classList.add("show");
-
-setTimeout(() => {
-  toast.classList.remove("show");
-}, 2000);
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
       }
     });
 
