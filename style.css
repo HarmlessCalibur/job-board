@@ -383,7 +383,7 @@ body::after {
 
   background: 
     linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url("images/ds.jpg") no-repeat center center/cover;
+    url("images/ds.jpg.webp") no-repeat center center/cover;
 
   color: #c9c9c9;
 }
