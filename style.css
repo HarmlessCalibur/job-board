@@ -369,3 +369,83 @@ body::after {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* DARK SOULS THEME */
+
+.ds-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
+
+.ds-title {
+  font-size: 42px;
+  color: #c9c9c9;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.ds-subtitle {
+  margin: 10px 0 30px;
+  color: #777;
+  font-style: italic;
+}
+
+.ds-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+}
+
+.ds-form input,
+.ds-form textarea {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 10px;
+}
+
+.ds-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.ds-form button {
+  background: transparent;
+  border: 1px solid #888;
+  color: #aaa;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ds-form button:hover {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.ds-response {
+  margin-top: 20px;
+  color: #999;
+  font-style: italic;
+}
+
+.hidden {
+  display: none;
+}
+.ds-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.1;
+}
